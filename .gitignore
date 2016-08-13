@@ -1,0 +1,16 @@
+logs/*
+!.gitkeep
+node_modules/
+bower_components/
+tmp
+.DS_Store
+.idea
+www/js
+www/img
+www/css
+www/*.html
+www/**/*.html
+**/*.log
+**/*.zip
+www/**/*.json
+/www/
