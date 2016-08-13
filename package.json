@@ -1,0 +1,14 @@
+{
+  "name": "fed-mockserver",
+  "version": "1.0.0",
+  "description": "mock server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
