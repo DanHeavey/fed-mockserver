@@ -4,23 +4,15 @@ var app = express();
 var fs = require('fs');
 var appPort = 8081;
 
-
 var requestHandler = function (req, res) {
 
     console.log(req.method);
-
-
-    //res.writeHead(200, {'Content-Type': 'application/json; charset=utf-8'});
-
-
-    res.header("Access-CAontrol-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
 
     if(req.url.indexOf('/') > -1 && req.url.indexOf('.') === -1) {
-
         console.log(req.url);
-
         req.url = req.url.replace('/api/', '');
         //req.url = req.url.replace(/ap.+\//, '');
         req.url = req.url.slice(req.url.indexOf('/'), req.url.length);
@@ -33,19 +25,8 @@ var requestHandler = function (req, res) {
         //req.url = req.url.replace('?','');
     }
     var path = "";
-    if(req.url.indexOf('.html') > -1) {
+    path = __dirname + '/json/' + req.url.toLowerCase() + ".json";
 
-        if(req.method !== 'POST') {
-            path = __dirname + '/html/' + req.url.toLowerCase();
-        }else {
-            path = __dirname + '/html/success.html';
-            //res.status(200).send({});
-        }
-
-    } else {
-
-        path = __dirname + '/json/' + req.url.toLowerCase() + ".json";
-    }
     fs.exists(path, function(exists) {
         if (exists) {
             console.log('file:' + path);
@@ -55,10 +36,6 @@ var requestHandler = function (req, res) {
             res.status(404).send('Not found');
         }
     });
-
-    //});
-    //
-    //delayed.wait(1000);
 
 };
 
