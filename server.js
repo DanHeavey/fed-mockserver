@@ -8,17 +8,14 @@ var appPort = 8081;
 var requestHandler = function (req, res) {
 
     console.log(req.method);
-    //var delayed = new DelayedResponse(req, res);
 
-    //delayed.on('done', function (data) {
-    //console.log(res);
 
     //res.writeHead(200, {'Content-Type': 'application/json; charset=utf-8'});
 
 
     res.header("Access-CAontrol-Allow-Origin", "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, emailaddress, partnername, tokenid");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
 
     if(req.url.indexOf('/') > -1 && req.url.indexOf('.') === -1) {
 
@@ -68,7 +65,7 @@ var requestHandler = function (req, res) {
 var optionHandler = function(req, res){
     res.header("Access-Control-Allow-Origin", "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, emailaddress, partnername, tokenid");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
     res.status(200).send('OK');
 };
 
